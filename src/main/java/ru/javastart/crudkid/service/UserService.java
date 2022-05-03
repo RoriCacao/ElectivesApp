@@ -1,11 +1,13 @@
 package ru.javastart.crudkid.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.javastart.crudkid.model.User;
 import ru.javastart.crudkid.repository.UserRepository;
 
 import java.util.List;
 
+@Service
 public class UserService {
     private final UserRepository userRepository;
 
@@ -15,7 +17,7 @@ public class UserService {
     }
 
     public User findById(Long id) {
-        return userRepository.getOne(id);
+        return userRepository.getById(id);
     }
 
     public List<User> findAll() {
