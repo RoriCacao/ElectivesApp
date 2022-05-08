@@ -29,6 +29,7 @@ public class UserController {
     @GetMapping("/{id}")
     public String showUser(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.findById(id));
+        model.addAttribute("electives",userService.showElectives(id));
         return "/show";
     }
 

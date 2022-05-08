@@ -2,10 +2,12 @@ package ru.javastart.crudkid.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.javastart.crudkid.model.Elective;
 import ru.javastart.crudkid.model.User;
 import ru.javastart.crudkid.repository.UserRepository;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -30,5 +32,9 @@ public class UserService {
 
     public void deleteById(Long id) {
         userRepository.deleteById(id);
+    }
+
+    public Set<Elective> showElectives(Long id){
+        return userRepository.getById(id).getElectives();
     }
 }

@@ -8,6 +8,12 @@
 <form action="#" th:action="@{/users}" th:object="${user}" method="post">
     <label for="Name">Name</label>
     <input type="text" th:field="*{name}" id="name" placeholder="Name">
+    <label for="Age">Age</label>
+    <input type="text" th:field="*{age}" id="age" placeholder="Age">
+    <label for="Sex">Sex</label>
+    <input type="text" th:field="*{sex}" id="sex" placeholder="Sex">
+
+
     <input type="submit" value="Create User">
 </form>
 </body>
