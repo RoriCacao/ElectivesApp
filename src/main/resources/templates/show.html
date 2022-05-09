@@ -28,5 +28,23 @@
         </table>
     </div>
 </div>
+<div th:switch="${freeElectives}">
+    <h2 th:case="null">No users found!</h2>
+    <div th:case="*">
+        <h2>Free Electives</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="elective : ${freeElectives}">
+                <td th:text="${elective.getName()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>

@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.javastart.crudkid.model.Elective;
 import ru.javastart.crudkid.model.User;
+import ru.javastart.crudkid.service.ElectiveService;
 import ru.javastart.crudkid.service.UserService;
 
 import java.util.List;
@@ -14,10 +14,12 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
     private UserService userService;
+    private ElectiveService electiveService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, ElectiveService electiveService) {
         this.userService = userService;
+        this.electiveService = electiveService;
     }
 
     @GetMapping()
@@ -31,6 +33,7 @@ public class UserController {
     public String showUser(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.findById(id));
         model.addAttribute("electives",userService.showElectives(id));
+        model.addAttribute("freeElectives",electiveService.findAllFreeTrainings(id));
         return "/show";
     }
 

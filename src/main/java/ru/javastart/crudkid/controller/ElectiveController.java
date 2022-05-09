@@ -26,4 +26,5 @@ public class ElectiveController {
         model.addAttribute("electives",electives);
         return "/elective-list";
     }
+
 }
