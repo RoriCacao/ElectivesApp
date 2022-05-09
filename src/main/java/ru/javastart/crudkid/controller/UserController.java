@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.javastart.crudkid.model.Elective;
 import ru.javastart.crudkid.model.User;
 import ru.javastart.crudkid.service.UserService;
 

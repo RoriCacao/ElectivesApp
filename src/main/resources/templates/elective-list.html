@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Electives</title>
+</head>
+<body>
+<div th:switch="${electives}">
+    <h2 th:case="null">No users found!</h2>
+    <div th:case="*">
+        <h2>Electives</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Teacher name</th>
+                <th>Min age</th>
+                <th>Max number of people</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="elective : ${electives}">
+                <td th:text="${elective.getId()}"></td>
+                <td><a th:text="${elective.getName()}">Elective</a></td>
+                <td><a th:text="${elective.getTeacherName()}">Teacher Name</a></td>
+                <td><a th:text="${elective.getMinAge()}">Min Age</a></td>
+                <td><a th:text="${elective.getMaxNumberOfPeople()}">Max people</a></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/users">Users</a></p>
+</div>
+</body>
+</html>
