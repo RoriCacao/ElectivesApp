@@ -32,8 +32,8 @@ public class UserController {
     @GetMapping("/{id}")
     public String showUser(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.findById(id));
-        model.addAttribute("electives",userService.showElectives(id));
-        model.addAttribute("freeElectives",electiveService.findAllFreeTrainings(id));
+        model.addAttribute("electives", userService.showElectives(id));
+        model.addAttribute("freeElectives", electiveService.findAllFreeTrainings(id));
         return "/show";
     }
 
@@ -49,9 +49,9 @@ public class UserController {
     }
 
     @GetMapping("/update/{id}")
-    public String updateUser(@PathVariable("id") Long id, Model model){
+    public String updateUser(@PathVariable("id") Long id, Model model) {
         User user = userService.findById(id);
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         return "user-update";
     }
 
@@ -62,9 +62,20 @@ public class UserController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") Long id){
+    public String delete(@PathVariable("id") Long id) {
         userService.deleteById(id);
         return "redirect:/users";
     }
 
+    @PostMapping("/{id}/removeElective/{electiveId}")
+    public String removeElective(@PathVariable("id") Long id, @PathVariable("electiveId") Long electiveId) {
+        userService.removeElective(id, electiveId);
+        return "redirect:/users/{id}";
+    }
+
+    @PostMapping("/{id}/addElective")
+    public String addElective(@PathVariable("id") Long id, @RequestParam("electiveId") Long electiveId) {
+        userService.addElective(id, electiveId);
+        return "redirect:/users/{id}";
+    }
 }

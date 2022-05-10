@@ -70,7 +70,7 @@ public class User {
         return electives;
     }
 
-    public void addElective(Elective elective) {
-        electives.add(elective);
+    public void setElectives(Set<Elective> electives) {
+        this.electives = electives;
     }
 }

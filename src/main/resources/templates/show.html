@@ -41,6 +41,12 @@
             <tbody>
             <tr th:each="elective : ${freeElectives}">
                 <td th:text="${elective.getName()}"></td>
+                <td>
+                    <form th:method="PATCH" th:action="@{/users/{id}/addElective(id=${user.getId()})}">
+                        <input th:name="electiveId" th:type="hidden" th:value="${elective.getId}">
+                        <input type="submit" value="Add">
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>
