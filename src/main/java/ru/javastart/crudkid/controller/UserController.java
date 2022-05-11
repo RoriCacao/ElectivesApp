@@ -67,8 +67,8 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @PostMapping("/{id}/removeElective/{electiveId}")
-    public String removeElective(@PathVariable("id") Long id, @PathVariable("electiveId") Long electiveId) {
+    @PostMapping("/{id}/removeElective")
+    public String removeElective(@PathVariable("id") Long id, @RequestParam("electiveId") Long electiveId) {
         userService.removeElective(id, electiveId);
         return "redirect:/users/{id}";
     }

@@ -43,15 +43,15 @@ public class UserService {
     }
 
     public void addElective(Long userId, Long electiveId){
-        Elective elective = electiveRepository.getById(electiveId);
         User user = userRepository.getById(userId);
-        Set<Elective> electives = user.getElectives();
-        electives.add(elective);
+        user.getElectives().add(electiveRepository.getById(electiveId));
+        userRepository.save(user);
     }
 
     public void removeElective(Long userId, Long electiveId){
-        Elective elective = electiveRepository.getById(electiveId);
-        userRepository.getById(userId).getElectives().remove(elective);
+        User user = userRepository.getById(userId);
+        user.getElectives().remove(electiveRepository.getById(electiveId));
+        userRepository.save(user);
     }
 
 }

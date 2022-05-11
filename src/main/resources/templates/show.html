@@ -23,6 +23,12 @@
             <tbody>
             <tr th:each="elective : ${electives}">
                 <td th:text="${elective.getName()}"></td>
+                <td>
+                    <form th:method="patch" th:action="@{/users/{id}/removeElective(id=${user.getId()})}">
+                        <input th:name="electiveId" th:type="hidden" th:value="${elective.getId}">
+                        <input type="submit" value="Remove">
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -42,7 +48,7 @@
             <tr th:each="elective : ${freeElectives}">
                 <td th:text="${elective.getName()}"></td>
                 <td>
-                    <form th:method="PATCH" th:action="@{/users/{id}/addElective(id=${user.getId()})}">
+                    <form th:method="patch" th:action="@{/users/{id}/addElective(id=${user.getId()})}">
                         <input th:name="electiveId" th:type="hidden" th:value="${elective.getId}">
                         <input type="submit" value="Add">
                     </form>

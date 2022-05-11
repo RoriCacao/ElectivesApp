@@ -73,4 +73,8 @@ public class User {
     public void setElectives(Set<Elective> electives) {
         this.electives = electives;
     }
+
+   /* public void addElective(Elective elective) {
+        this.electives.add(elective);
+    }*/
 }
