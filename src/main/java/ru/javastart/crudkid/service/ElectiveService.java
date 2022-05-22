@@ -15,6 +15,7 @@ public class ElectiveService {
     private final ElectiveRepository electiveRepository;
     private final UserRepository userRepository;
 
+
     @Autowired
     public ElectiveService(ElectiveRepository electiveRepository, UserRepository userRepository) {
         this.electiveRepository = electiveRepository;
@@ -34,13 +35,19 @@ public class ElectiveService {
         User user = userRepository.getById(id);
         Set<Elective> usersElectives = user.getElectives();
 
-        for (Elective e: usersElectives
-             ) {
+        for (Elective e : usersElectives
+        ) {
             if (electives.contains(e))
-            electives.remove(e);
+                electives.remove(e);
         }
+
 
         return electives;
     }
+
+    public Long findElectivesCount(Long id) {  //Тут HQL
+        return electiveRepository.aa(id);
+    }
+
 
 }

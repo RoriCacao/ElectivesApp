@@ -33,7 +33,9 @@ public class UserController {
     public String showUser(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.findById(id));
         model.addAttribute("electives", userService.showElectives(id));
-        model.addAttribute("freeElectives", electiveService.findAllFreeTrainings(id));
+        model.addAttribute("freeElectives", this.electiveService.findAllFreeTrainings(id));
+        model.addAttribute("electiveService",electiveService);
+        model.addAttribute("electivesCount", electiveService.findElectivesCount(id)); //Тут HQL
         return "/show";
     }
 

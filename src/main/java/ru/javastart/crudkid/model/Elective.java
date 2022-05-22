@@ -1,5 +1,8 @@
 package ru.javastart.crudkid.model;
 
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -33,6 +36,7 @@ public class Elective {
             joinColumns = {@JoinColumn(name = "electives_id")},
             inverseJoinColumns = {@JoinColumn(name = "clients_id")})
     private Set<User> users = new HashSet<>();
+
 
     public Long getId() {
         return id;
@@ -81,4 +85,5 @@ public class Elective {
     public void setUsers(Set<User> users) {
         this.users = users;
     }
+
 }

@@ -23,6 +23,9 @@
             <tbody>
             <tr th:each="elective : ${electives}">
                 <td th:text="${elective.getName()}"></td>
+                <td th:text="${electiveService.findElectivesCount(elective.getId())}"></td>
+                <td>/</td>
+                <td th:text="${elective.getMaxNumberOfPeople()}"></td>
                 <td>
                     <form th:method="patch" th:action="@{/users/{id}/removeElective(id=${user.getId()})}">
                         <input th:name="electiveId" th:type="hidden" th:value="${elective.getId}">
@@ -47,16 +50,21 @@
             <tbody>
             <tr th:each="elective : ${freeElectives}">
                 <td th:text="${elective.getName()}"></td>
+                <td th:text="${electiveService.findElectivesCount(elective.getId())}"></td>
+                <td>/</td>
+                <td th:text="${elective.getMaxNumberOfPeople()}"></td>
                 <td>
                     <form th:method="patch" th:action="@{/users/{id}/addElective(id=${user.getId()})}">
                         <input th:name="electiveId" th:type="hidden" th:value="${elective.getId}">
                         <input type="submit" value="Add">
                     </form>
                 </td>
+
             </tr>
             </tbody>
         </table>
     </div>
 </div>
+
 </body>
 </html>

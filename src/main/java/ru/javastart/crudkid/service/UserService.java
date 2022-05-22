@@ -38,17 +38,17 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public Set<Elective> showElectives(Long id){
+    public Set<Elective> showElectives(Long id) {
         return userRepository.getById(id).getElectives();
     }
 
-    public void addElective(Long userId, Long electiveId){
+    public void addElective(Long userId, Long electiveId) {
         User user = userRepository.getById(userId);
         user.getElectives().add(electiveRepository.getById(electiveId));
         userRepository.save(user);
     }
 
-    public void removeElective(Long userId, Long electiveId){
+    public void removeElective(Long userId, Long electiveId) {
         User user = userRepository.getById(userId);
         user.getElectives().remove(electiveRepository.getById(electiveId));
         userRepository.save(user);
